@@ -16,8 +16,8 @@ public class QuoteService {
     public String quoteUrl;
 
     public String getRandomQuote() {
-        QuoteResult quoteResult = restTemplate.getForEntity(quoteUrl, QuoteResult.class).getBody();
-        return quoteResult.getQuote();
+        String quoteResult = restTemplate.getForObject(quoteUrl, String.class);
+        return quoteResult;
     }
 
 }

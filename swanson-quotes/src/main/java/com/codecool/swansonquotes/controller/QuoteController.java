@@ -1,5 +1,6 @@
 package com.codecool.swansonquotes.controller;
 
+import com.codecool.swansonquotes.model.QuoteResult;
 import com.codecool.swansonquotes.service.QuoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,10 @@ public class QuoteController {
 
     @GetMapping("/random-quote")
     @ResponseBody
-    public String getRandomQuote() {
-        return quoteService.getRandomQuote();
+    public QuoteResult getRandomQuote() {
+        return new QuoteResult(
+                quoteService.getRandomQuote()
+        );
     }
 
 }
