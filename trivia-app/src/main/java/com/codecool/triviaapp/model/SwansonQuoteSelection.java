@@ -1,4 +1,4 @@
-package com.codecool.triviagame.model;
+package com.codecool.triviaapp.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

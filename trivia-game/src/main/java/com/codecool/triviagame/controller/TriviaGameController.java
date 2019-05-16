@@ -15,7 +15,7 @@ public class TriviaGameController {
     TriviaApiHandler triviaApiHandler;
 
     @GetMapping("/get-question")
-    public Result getQuestion(){
+    public TriviaQuestion getQuestion(){
         return triviaApiHandler.getTriviaQuestion();
     }
 

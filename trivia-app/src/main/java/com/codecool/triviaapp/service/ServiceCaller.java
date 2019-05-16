@@ -1,7 +1,8 @@
-package com.codecool.triviagame.service;
+package com.codecool.triviaapp.service;
 
-import com.codecool.triviagame.model.SwansonQuoteSelection;
-import com.codecool.triviagame.model.TriviaHintSelection;
+import com.codecool.triviaapp.model.SwansonQuoteSelection;
+import com.codecool.triviaapp.model.TriviaHintSelection;
+import com.codecool.triviaapp.model.TriviaQuestionSelection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -19,9 +20,17 @@ public class ServiceCaller {
     @Value("${hint.url}")
     private String hintUrl;
 
+    @Value("${trivia.url}")
+    private String triviaUrl;
+
+    public TriviaQuestionSelection retrieveTriviaQuestion() {
+        return restTemplate.getForObject(triviaUrl, TriviaQuestionSelection.class);
+    }
+
     public String retrieveSwansonQuote() {
-        SwansonQuoteSelection body = restTemplate.getForEntity(swansonUrl, SwansonQuoteSelection.class).getBody();
-        return body.getQuote();
+        System.out.println(swansonUrl);
+        SwansonQuoteSelection swansonQuoteSelection = restTemplate.getForObject(swansonUrl, SwansonQuoteSelection.class);
+        return swansonQuoteSelection.getQuote();
     }
 
     public String retrieveTriviaHint(String search) {
