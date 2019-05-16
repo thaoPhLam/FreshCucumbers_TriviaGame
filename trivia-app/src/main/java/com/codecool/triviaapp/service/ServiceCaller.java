@@ -36,6 +36,7 @@ public class ServiceCaller {
     public String retrieveTriviaHint(String search) {
         String searchHintUrl = hintUrl + "?search=" + search;
         TriviaHintSelection body = restTemplate.getForEntity(searchHintUrl, TriviaHintSelection.class).getBody();
+        System.out.println(body.getLink());
         return body.getLink();
     }
 }

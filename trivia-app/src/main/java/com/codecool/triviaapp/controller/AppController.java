@@ -23,13 +23,13 @@ public class AppController {
         return serviceCaller.retrieveTriviaQuestion();
     }
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/game")
     public String GameView(@ModelAttribute("game") TriviaQuestionSelection triviaQuestionSelection, Model model) {
         model.addAttribute("swansonism", serviceCaller.retrieveSwansonQuote());
         model.addAttribute("question", triviaQuestionSelection.getQuestion());
         model.addAttribute("correctanswer", triviaQuestionSelection.getCorrectAnswer());
         model.addAttribute("allanswers", triviaQuestionSelection.getAllAnswers());
-//        model.addAttribute("gameHint", serviceCaller.retrieveTriviaHint(triviaQuestionSelection.getCorrectAnswer()));
+        model.addAttribute("gameHint", "https://thehorse.com/wp-content/uploads/2017/09/paint-horse-running-in-field.jpg");
 
         return "game";
     }
