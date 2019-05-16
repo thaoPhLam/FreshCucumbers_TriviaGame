@@ -1,5 +1,6 @@
 package com.codecool.triviagame.service;
 
+import com.codecool.triviagame.model.Result;
 import com.codecool.triviagame.model.TriviaQuestion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,9 +18,9 @@ public class TriviaApiHandler {
     @Autowired
     RestTemplate restTemplate;
 
-    public TriviaQuestion getTriviaQuestion(){
+    public Result getTriviaQuestion(){
         System.out.println(apiLink);
-        TriviaQuestion triviaQuestion = restTemplate.getForObject(apiLink, TriviaQuestion.class);
+        Result triviaQuestion = restTemplate.getForObject(apiLink, Result.class);
         System.out.println(triviaQuestion);
         return triviaQuestion;
     }

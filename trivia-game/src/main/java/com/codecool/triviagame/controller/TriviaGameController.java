@@ -1,5 +1,6 @@
 package com.codecool.triviagame.controller;
 
+import com.codecool.triviagame.model.Result;
 import com.codecool.triviagame.model.TriviaQuestion;
 import com.codecool.triviagame.service.TriviaApiHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class TriviaGameController {
     TriviaApiHandler triviaApiHandler;
 
     @GetMapping("/get-question")
-    public TriviaQuestion getQuestion(){
+    public Result getQuestion(){
         return triviaApiHandler.getTriviaQuestion();
     }
 
