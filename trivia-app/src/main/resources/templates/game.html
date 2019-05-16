@@ -8,13 +8,13 @@
 </head>
 <body>
 
-<!--h:text="${game.getBoard()[3]}-->
     <H2>TESTING A THING</H2>
 
         <p class=quotetest th:utext="${question}"></p>
 
         <p class=quotetest th:utext="${correctanswer}"></p>
         <p class=quotetest th:utext="${swansonism}"></p>
+        <p th:utext="${score.getScore()}"></p>
 
         <table class="table table-bordered">
             <tr th:each="answer : ${allanswers}">

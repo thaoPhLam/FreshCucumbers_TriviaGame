@@ -1,5 +1,6 @@
 package com.codecool.triviaapp.controller;
 
+import com.codecool.triviaapp.model.Score;
 import com.codecool.triviaapp.model.TriviaQuestionSelection;
 import com.codecool.triviaapp.service.ServiceCaller;
 import lombok.Data;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Data
 @Controller
-@SessionAttributes
+@SessionAttributes("score")
 public class AppController {
 
     @Autowired
@@ -23,7 +24,12 @@ public class AppController {
         return serviceCaller.retrieveTriviaQuestion();
     }
 
-    @GetMapping(value = "/")
+    @ModelAttribute("score")
+    public Score score(){
+        return new Score();
+    }
+
+    @GetMapping(value = "/game")
     public String GameView(@ModelAttribute("game") TriviaQuestionSelection triviaQuestionSelection, Model model) {
         model.addAttribute("swansonism", serviceCaller.retrieveSwansonQuote());
         model.addAttribute("question", triviaQuestionSelection.getQuestion());
@@ -35,13 +41,17 @@ public class AppController {
     }
 
     @GetMapping(value = "/game-selection")
-    public String gameSelection(@ModelAttribute("game") TriviaQuestionSelection triviaQuestion, int selection) {
+    public String gameSelection(@ModelAttribute("game") TriviaQuestionSelection triviaQuestion, String selection,
+                                @ModelAttribute("score") Score score) {
+        score.evaluateAnswer(selection,triviaQuestion.getCorrectAnswer());
         return "redirect:/game";
     }
 
-    @GetMapping(value = "/game-hint")
-    public String gameHint(@ModelAttribute("game") TriviaQuestionSelection triviaQuestion, String hint, Model model ) {
+//    @GetMapping(value = "/test-selection")
+//    public void incrementScore(@ModelAttribute("game") TriviaQuestionSelection triviaQuestion, String selection,
+//                               @ModelAttribute("score") Score score){
+//
+//
+//    }
 
-        return "redirect:/game";
-    }
 }
