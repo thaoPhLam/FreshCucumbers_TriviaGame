@@ -28,8 +28,8 @@ public class AppController {
         model.addAttribute("swansonism", serviceCaller.retrieveSwansonQuote());
         model.addAttribute("question", triviaQuestionSelection.getQuestion());
         model.addAttribute("correctanswer", triviaQuestionSelection.getCorrectAnswer());
-        model.addAttribute("wronganswers", triviaQuestionSelection.getInCorrectAnswers());
-        model.addAttribute("gameHint", serviceCaller.retrieveTriviaHint(triviaQuestionSelection.getCorrectAnswer()));
+        model.addAttribute("allanswers", triviaQuestionSelection.getAllAnswers());
+//        model.addAttribute("gameHint", serviceCaller.retrieveTriviaHint(triviaQuestionSelection.getCorrectAnswer()));
 
         return "game";
     }

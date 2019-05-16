@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
 public class TriviaQuestionSelection {
@@ -16,4 +17,9 @@ public class TriviaQuestionSelection {
 
     @JsonProperty("incorrect_answers")
     public List<String> inCorrectAnswers;
+
+    @JsonProperty("all_answers")
+    public Set<String> allAnswers;
+
+
 }

@@ -12,12 +12,16 @@
     <H2>TESTING A THING</H2>
 
         <p class=quotetest th:utext="${question}"></p>
-        <p class=quotetest th:utext="${wronganswers.get(0)}"></p>
-        <p class=quotetest th:utext="${wronganswers.get(1)}"></p>
-        <p class=quotetest th:utext="${wronganswers.get(2)}"></p>
+
         <p class=quotetest th:utext="${correctanswer}"></p>
         <p class=quotetest th:utext="${swansonism}"></p>
-        <img th:src="${gameHint}" height="200" width="200">
+
+        <table class="table table-bordered">
+            <tr th:each="answer : ${allanswers}">
+                <td th:utext="${answer}"> </td>
+            </tr>
+        </table>
+        <!--<img th:src="${gameHint}" height="200" width="200">-->
 
 
 

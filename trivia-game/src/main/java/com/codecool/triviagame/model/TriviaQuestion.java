@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -27,6 +29,11 @@ public class TriviaQuestion {
 
     @JsonProperty("incorrect_answers")
     public List<String> inCorrectAnswers;
+
+    @JsonProperty("all_answers")
+    public Set<String> allAnswers;
+
+
 
 
 
