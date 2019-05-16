@@ -1,4 +1,4 @@
-package com.codecool.triviagame;
+package com.codecool.triviaapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,13 +9,14 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class TriviaGameApplication {
+public class TriviaAppApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TriviaGameApplication.class, args);
+        SpringApplication.run(TriviaAppApplication.class, args);
     }
 
     @Bean
+    @LoadBalanced
     RestTemplate restTemplate() {
         return new RestTemplate();
     }

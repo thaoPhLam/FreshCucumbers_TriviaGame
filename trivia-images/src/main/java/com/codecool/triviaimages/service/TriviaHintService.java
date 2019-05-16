@@ -28,10 +28,10 @@ public class TriviaHintService {
 
     public TriviaHint searchForHint(String search) {
         String searchUrl = baseUrl + googleSearchId + "&key=" + googleSearchApi + "&q=" + search + "&searchType=image";
-        System.out.println(searchUrl);
+
         ImageList images = restTemplate.getForObject(searchUrl, ImageList.class);
         List<TriviaHint> triviaHints = images.getTriviaHints();
-        System.out.println(triviaHints.get(0));
+
         return triviaHints.get(0);
     }
 }
