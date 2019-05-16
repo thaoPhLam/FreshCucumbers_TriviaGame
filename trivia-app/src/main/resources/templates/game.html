@@ -5,25 +5,41 @@
 <head>
     <meta charset="UTF-8">
     <title>GAMETESTING</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!---->
+<div id="stage">
+    <div id="container">
+        <div id="gameContainer">
 
-<!--h:text="${game.getBoard()[3]}-->
-    <H2>TESTING A THING</H2>
+            <div id="gameHeader">
+                <div class="left questions">
+                    <div class="container">
+                        <span>
+                            <h1 class=quotetest th:utext="${question}"></h1>
+                            <p class=quotetest th:utext="${swansonism}"></p>
+                        </span>
+                    </div>
+                </div>
+            </div>
 
-        <p class=quotetest th:utext="${question}"></p>
+            <div id="gameChoices">
+                <div class="row" th:each="answer : ${allanswers}">
+                    <div class="left half">
+                        <div class="container"><button th:utext="${answer}"></button></div>
+                    </div>
+                </div>
+            </div>
 
-        <p class=quotetest th:utext="${correctanswer}"></p>
-        <p class=quotetest th:utext="${swansonism}"></p>
-
-        <table class="table table-bordered">
-            <tr th:each="answer : ${allanswers}">
-                <td th:utext="${answer}"> </td>
-            </tr>
-        </table>
-        <!--<img th:src="${gameHint}" height="200" width="200">-->
-
-
+            <!--
+            <div>
+                <img th:src="${gameHint}" height="200" width="200">
+            </div>
+            -->
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

@@ -1,0 +1,41 @@
+
+#gameChoices button {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    line-height: 32px;
+    border-radius: 2px;
+    font-size: 26px;
+    width: 100%;
+    outline:none;
+    border:none;
+    background-color: #ff5722;
+    height: 100%;
+    display: block;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    padding: 40px;
+    font-family: "Roboto Mono", Roboto, sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+}
+
+#gameChoices button:hover {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.26), 0 4px 15px 0 rgba(0, 0, 0, 0.26);
+    background-color:#ff6a3c;
+}
+
+.questions {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    background-color: #000;
+    float:left;
+    display: block;
+    margin-right: 2%;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.questions span {
+    color: #ff5722;
+    font-size: 26px;
+}
