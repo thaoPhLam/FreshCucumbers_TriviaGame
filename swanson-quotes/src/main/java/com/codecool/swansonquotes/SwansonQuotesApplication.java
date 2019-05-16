@@ -1,4 +1,4 @@
-package com.codecool.triviaimages;
+package com.codecool.swansonquotes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,14 +8,14 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class TriviaImagesApplication {
+public class SwansonQuotesApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TriviaImagesApplication.class, args);
+        SpringApplication.run(SwansonQuotesApplication.class, args);
     }
 
     @Bean
-    RestTemplate restTemplate() {
+    public RestTemplate restTemplate() {
         return new RestTemplate();
     }
 
