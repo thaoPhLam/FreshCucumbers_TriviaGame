@@ -8,20 +8,20 @@
 </head>
 <body>
 
-<!--h:text="${game.getBoard()[3]}-->
     <H2>TESTING A THING</H2>
 
         <p class=quotetest th:utext="${question}"></p>
 
         <p class=quotetest th:utext="${correctanswer}"></p>
         <p class=quotetest th:utext="${swansonism}"></p>
+        <p th:utext="${score.getScore()}"></p>
 
         <table class="table table-bordered">
             <tr th:each="answer : ${allanswers}">
                 <td th:utext="${answer}"> </td>
             </tr>
         </table>
-        <!--<img th:src="${gameHint}" height="200" width="200">-->
+        <img th:src="${gameHint}" height="200" width="200">
 
 
 

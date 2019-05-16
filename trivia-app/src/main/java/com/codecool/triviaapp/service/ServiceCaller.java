@@ -28,7 +28,6 @@ public class ServiceCaller {
     }
 
     public String retrieveSwansonQuote() {
-        System.out.println(swansonUrl);
         SwansonQuoteSelection swansonQuoteSelection = restTemplate.getForObject(swansonUrl, SwansonQuoteSelection.class);
         return swansonQuoteSelection.getQuote();
     }
