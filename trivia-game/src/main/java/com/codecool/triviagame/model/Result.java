@@ -12,25 +12,6 @@ import java.util.List;
         "response_code",
         "results"
 })
-/*
-{
-        "response_code": 0,
-        "results": [
-        {
-        "category": "Entertainment: Video Games",
-        "type": "multiple",
-        "difficulty": "easy",
-        "question": "The Khajiit are a race of cat-like creatures from which epic series of role-playing games, set across the land of Tamriel?",
-        "correct_answer": "The Elder Scrolls",
-        "incorrect_answers": [
-        "Lord of the Rings",
-        "The Witcher",
-        "Neverwinter Nights"
-        ]
-        }
-        ]
-        }
-        */
 @Data
 public class Result {
     @JsonProperty("results")
