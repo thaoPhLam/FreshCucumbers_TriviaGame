@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Data
 @Controller
-@SessionAttributes("score")
+@SessionAttributes({"score", "game"})
 public class AppController {
 
     @Autowired
@@ -24,6 +24,8 @@ public class AppController {
         return serviceCaller.retrieveTriviaQuestion();
     }
 
+
+
     @ModelAttribute("score")
     public Score score(){
         return new Score();
@@ -31,11 +33,14 @@ public class AppController {
 
     @GetMapping(value = "/game")
     public String GameView(@ModelAttribute("game") TriviaQuestionSelection triviaQuestionSelection, Model model) {
+        if(triviaQuestionSelection.receivedAnswer) {
+            triviaQuestionSelection = serviceCaller.retrieveTriviaQuestion();
+        }
         model.addAttribute("swansonism", serviceCaller.retrieveSwansonQuote());
         model.addAttribute("question", triviaQuestionSelection.getQuestion());
         model.addAttribute("correctanswer", triviaQuestionSelection.getCorrectAnswer());
         model.addAttribute("allanswers", triviaQuestionSelection.getAllAnswers());
-//        model.addAttribute("gameHint", serviceCaller.retrieveTriviaHint(triviaQuestionSelection.getCorrectAnswer()));
+        model.addAttribute("gameHint", serviceCaller.retrieveTriviaHint(triviaQuestionSelection.getCorrectAnswer()));
 
         return "game";
     }
@@ -44,6 +49,7 @@ public class AppController {
     public String gameSelection(@ModelAttribute("game") TriviaQuestionSelection triviaQuestion, String selection,
                                 @ModelAttribute("score") Score score) {
         score.evaluateAnswer(selection,triviaQuestion.getCorrectAnswer());
+        triviaQuestion.setReceivedAnswer(true);
         return "redirect:/game";
     }
 

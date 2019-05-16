@@ -33,6 +33,9 @@ public class TriviaQuestion {
     @JsonProperty("all_answers")
     public Set<String> allAnswers;
 
+    @JsonProperty("answer_received")
+    public boolean receivedAnswer = false;
+
 
 
 
