@@ -53,11 +53,6 @@ public class AppController {
         return "redirect:/game";
     }
 
-//    @GetMapping(value = "/test-selection")
-//    public void incrementScore(@ModelAttribute("game") TriviaQuestionSelection triviaQuestion, String selection,
-//                               @ModelAttribute("score") Score score){
-//
-//
-//    }
+
 
 }
