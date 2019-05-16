@@ -13,12 +13,12 @@ import java.util.List;
 public class TriviaHintService {
 
 
-//  https://www.googleapis.com/customsearch/v1?cx=004982975868314502689:xesrxo-klao&key=AIzaSyDg7qg5somTKBK7N2FsLtWrsfLD4H_g-Ro&q=horse&searchType=image
 
     @Autowired
     RestTemplate restTemplate;
 
-    private String baseUrl = "https://www.googleapis.com/customsearch/v1?cx=";
+    @Value("${google.custom.search}")
+    private String baseUrl;
 
     @Value("${google.api.key}")
     private String googleSearchApi;
@@ -28,6 +28,7 @@ public class TriviaHintService {
 
     public TriviaHint searchForHint(String search) {
         String searchUrl = baseUrl + googleSearchId + "&key=" + googleSearchApi + "&q=" + search + "&searchType=image";
+        System.out.println(searchUrl);
         ImageList images = restTemplate.getForObject(searchUrl, ImageList.class);
         List<TriviaHint> triviaHints = images.getTriviaHints();
         System.out.println(triviaHints.get(0));
