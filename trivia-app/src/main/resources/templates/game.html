@@ -5,25 +5,65 @@
 <head>
     <meta charset="UTF-8">
     <title>GAMETESTING</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+<!---->
+<div id="stage">
+    <div id="container">
+        <div id="gameContainer">
 
-    <H2>TESTING A THING</H2>
-
-        <p class=quotetest th:utext="${question}"></p>
-
-        <p class=quotetest th:utext="${correctanswer}"></p>
-        <p class=quotetest th:utext="${swansonism}"></p>
-        <p th:utext="${score.getScore()}"></p>
-
-        <table class="table table-bordered">
-            <tr th:each="answer : ${allanswers}">
-                <td th:utext="${answer}"> </td>
-            </tr>
-        </table>
-        <img th:src="${gameHint}" height="200" width="200">
+            <div id="gameHeader">
+                <div class="left questions">
+                    <div class="container">
+                        <span>
+                            <h1 class=quotetest th:utext="${question}"></h1>
+                            <p class=quotetest th:utext="${swansonism}"></p>
+                        </span>
+                    </div>
+                </div>
+            </div>
 
 
+            <div id="gameChoices">
+                <div class="row" th:each="answer : ${allanswers}">
+                    <div class="left half">
+                        <div class="container"><a th:href="@{'/game-selection?selection=' + ${answer}}" th:utext="${answer}"></a></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Click for hint!</button>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Your hint</h4>
+                        </div>
+                        <div class="modal-body">
+                            <img th:src="${gameHint}" height="200" width="200">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <p th:utext="${score.getScore()}">Your score: </p>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

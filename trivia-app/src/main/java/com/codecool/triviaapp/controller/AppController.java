@@ -24,8 +24,6 @@ public class AppController {
         return serviceCaller.retrieveTriviaQuestion();
     }
 
-
-
     @ModelAttribute("score")
     public Score score(){
         return new Score();
@@ -33,14 +31,22 @@ public class AppController {
 
     @GetMapping(value = "/game")
     public String GameView(@ModelAttribute("game") TriviaQuestionSelection triviaQuestionSelection, Model model) {
-        if(triviaQuestionSelection.receivedAnswer) {
-            triviaQuestionSelection = serviceCaller.retrieveTriviaQuestion();
+        if(triviaQuestionSelection.isReceivedAnswer()) {
+            TriviaQuestionSelection triviaQuestionSelectionTemp = serviceCaller.retrieveTriviaQuestion();
+            triviaQuestionSelection.setQuestion(triviaQuestionSelectionTemp.question);
+            triviaQuestionSelection.setCorrectAnswer(triviaQuestionSelectionTemp.correctAnswer);
+            triviaQuestionSelection.setInCorrectAnswers(triviaQuestionSelectionTemp.inCorrectAnswers);
+            triviaQuestionSelection.setAllAnswers(triviaQuestionSelectionTemp.allAnswers);
+            System.out.println("Game screen " + triviaQuestionSelection.getQuestion());
+            triviaQuestionSelection.setReceivedAnswer(false);
         }
+
         model.addAttribute("swansonism", serviceCaller.retrieveSwansonQuote());
         model.addAttribute("question", triviaQuestionSelection.getQuestion());
         model.addAttribute("correctanswer", triviaQuestionSelection.getCorrectAnswer());
         model.addAttribute("allanswers", triviaQuestionSelection.getAllAnswers());
         model.addAttribute("gameHint", serviceCaller.retrieveTriviaHint(triviaQuestionSelection.getCorrectAnswer()));
+
 
         return "game";
     }
@@ -48,7 +54,9 @@ public class AppController {
     @GetMapping(value = "/game-selection")
     public String gameSelection(@ModelAttribute("game") TriviaQuestionSelection triviaQuestion, String selection,
                                 @ModelAttribute("score") Score score) {
+        System.out.println("Selection screen " + triviaQuestion.question);
         score.evaluateAnswer(selection,triviaQuestion.getCorrectAnswer());
+        System.out.println(selection + score);
         triviaQuestion.setReceivedAnswer(true);
         return "redirect:/game";
     }
