@@ -61,6 +61,13 @@ public class AppController {
         return "redirect:/game";
     }
 
+    @GetMapping(value = "/game-reset")
+    public String resetGame(@ModelAttribute("score") Score score) {
+        Score tempScore = new Score();
+        score.setScore(tempScore.getScore());
+        return "redirect:/game";
+    }
+
 
 
 }
