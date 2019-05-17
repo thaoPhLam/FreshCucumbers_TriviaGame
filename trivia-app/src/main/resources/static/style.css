@@ -1,5 +1,5 @@
 
-#gameChoices button {
+#gameChoices a {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     line-height: 32px;
     border-radius: 2px;
@@ -19,7 +19,7 @@
     font-size: 40px;
 }
 
-#gameChoices button:hover {
+#gameChoices a:hover {
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.26), 0 4px 15px 0 rgba(0, 0, 0, 0.26);
     background-color:#ff6a3c;
 }

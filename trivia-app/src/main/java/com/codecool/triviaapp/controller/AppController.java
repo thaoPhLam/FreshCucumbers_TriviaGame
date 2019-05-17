@@ -56,6 +56,7 @@ public class AppController {
                                 @ModelAttribute("score") Score score) {
         System.out.println("Selection screen " + triviaQuestion.question);
         score.evaluateAnswer(selection,triviaQuestion.getCorrectAnswer());
+        System.out.println(selection + score);
         triviaQuestion.setReceivedAnswer(true);
         return "redirect:/game";
     }
