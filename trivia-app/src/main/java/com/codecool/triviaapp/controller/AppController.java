@@ -24,8 +24,6 @@ public class AppController {
         return serviceCaller.retrieveTriviaQuestion();
     }
 
-
-
     @ModelAttribute("score")
     public Score score(){
         return new Score();
@@ -48,6 +46,7 @@ public class AppController {
         model.addAttribute("correctanswer", triviaQuestionSelection.getCorrectAnswer());
         model.addAttribute("allanswers", triviaQuestionSelection.getAllAnswers());
         model.addAttribute("gameHint", serviceCaller.retrieveTriviaHint(triviaQuestionSelection.getCorrectAnswer()));
+
 
         return "game";
     }
